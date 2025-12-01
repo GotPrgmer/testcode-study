@@ -1,7 +1,6 @@
 package org.study.testcode;
 
 import org.junit.jupiter.api.Test;
-import org.powermock.api.mockito.PowerMockito;
 
 import java.util.UUID;
 
