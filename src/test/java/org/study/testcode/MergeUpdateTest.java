@@ -40,4 +40,28 @@ public class MergeUpdateTest {
         // 트랜잭션 종료
         System.out.println("testEntity2 = " + testEntity2);
     }
+
+
+    @Test
+    @Rollback(value = false)
+    void update시_부분적으로_업데이트가_아니라_전체필드_업데이트쿼리가_나간다를_테스트합니다() {
+        String id = UUID.randomUUID().toString();
+
+        TestEntityOnlyId testEntity = new TestEntityOnlyId();
+        testEntity.setId(id);
+        testEntity.setName("테스트");
+        testEntity.setAge(10);
+        // 트랜잭션 시작
+        repository.save(testEntity);
+        // 트랜잭션 종료
+        System.out.println("testEntity = " + testEntity);
+
+        TestEntityOnlyId testEntity2 = new TestEntityOnlyId();
+        testEntity2.setId(id);
+        testEntity2.setName("테스트2");
+        // 트랜잭션 시작
+        repository.save(testEntity2);
+        // 트랜잭션 종료
+        System.out.println("testEntity2 = " + testEntity2);
+    }
 }
